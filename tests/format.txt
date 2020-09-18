@@ -1,0 +1,4 @@
+map size
+snake initial position
+number of bonuses
+bonuses position

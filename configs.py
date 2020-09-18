@@ -1,0 +1,1 @@
+TEST_FILE_ADDRESS = 'tests/test1.txt'
