@@ -25,8 +25,8 @@ class BFS:
             for action in currNode.state.getAvailableActions(self.maxRow, self.maxCol):
                 childNode = currNode.createChildNode(action, self.maxRow, self.maxCol)
 
-                if childNode.state in self.explored or self.frontier.contain(childNode):
-                    continue
+                # if childNode.state in self.explored or self.frontier.contain(childNode):
+                #     continue
 
                 if childNode.state.checkIsGoal():
                     print(childNode.state.snakePosition)
@@ -49,5 +49,10 @@ class BFS:
                 path += "R"
             elif(node.action == constants.LEFT):
                 path += "L"
+            # print(node.state.bonusEated)
+            # print(node.action)
+            print(node.state.snakePosition)
+            # print(node.state.bonusesPosition)
+            # print('.........')
             node = node.parent
         print("             Result path : ", path[::-1], "\n")
