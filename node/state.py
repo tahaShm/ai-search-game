@@ -2,19 +2,27 @@ import constants
 
 class State:
 
-    def __init__(self, snakePosition, bonusesPosition, bonusesVal, bonusEated = False):
+    def __init__(self, snakePosition, bonusesPosition, bonusEated = False):
         self.snakePosition = snakePosition
         self.bonusesPosition = bonusesPosition
-        self.bonusesVal = bonusesVal
 
         self.bonusEated = bonusEated
 
     def __copy__(self):
-        return State(self.snakePosition, self.bonusesPosition, self.bonusesVal, self.bonusEated)
+        return State(self.snakePosition, self.bonusesPosition, self.bonusEated)
+
+    def __eq__(self, otherClass):
+        if self.snakePosition != otherClass.snakePosition:
+            return False
+        if self.bonusesPosition != otherClass.bonusesPosition:
+            return False
+        if self.bonusEated != otherClass.bonusEated:
+            return False
+        return True
 
     def __hash__(self):
-        hashStr = str(hash(self.snakePosition)) + str(hash(self.bonusesPosition))
-        return hash(hashStr)
+        # hashStr = str(hash(self.snakePosition)) + str(hash(self.bonusesPosition))
+        return hash((self.snakePosition, self.bonusesPosition, self.bonusEated))
 
     def getAvailableActions(self, maxRow, maxCol):
         availableActions = set([constants.UP, constants.DOWN, constants.RIGHT, constants.LEFT])

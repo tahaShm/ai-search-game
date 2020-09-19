@@ -15,21 +15,20 @@ class BFS:
 
     def run(self):
         self.frontier.add(self.initNode)
+        # print('INIT HASH:')
+        # print(hash(self.initNode))
 
         while not self.frontier.isEmpty():
             currNode = self.frontier.get()
             self.explored.add(currNode.state)
 
-            childNode = currNode.createChildNode(3, self.maxRow, self.maxCol)
-
             for action in currNode.state.getAvailableActions(self.maxRow, self.maxCol):
                 childNode = currNode.createChildNode(action, self.maxRow, self.maxCol)
 
-                # if childNode.state in self.explored or self.frontier.contain(childNode):
-                #     continue
+                if childNode.state in self.explored or self.frontier.contain(childNode):
+                    continue
 
                 if childNode.state.checkIsGoal():
-                    print(childNode.state.snakePosition)
                     self.resultNode = childNode
                     return
 

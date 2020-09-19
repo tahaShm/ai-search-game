@@ -7,7 +7,7 @@ import configs
 IR = inputReader.InputReader(configs.TEST_FILE_ADDRESS)
 
 
-initState = state.State(IR.snakePrimaryPosition, IR.bounuses, IR.bonusesVal)
+initState = state.State(IR.snakePrimaryPosition, IR.bounuses)
 initNode = node.Node(initState)
 bfsObj = bfs.BFS(initNode, IR.mapSize[0], IR.mapSize[1])
 bfsObj.run()

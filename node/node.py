@@ -8,7 +8,7 @@ class Node:
         self.cost = cost
 
     def __hash__(self):
-        hashStr = str(hash(self.state)) + str(hash(self.parent)) + str(hash(self.action))
+        hashStr = str(hash(self.state))
         return hash(hashStr)
 
     def createChildNode(self, action, maxRow, maxCol):
