@@ -26,14 +26,7 @@ class State:
     def getAvailableActions(self, maxRow, maxCol):
         availableActions = set([constants.UP, constants.DOWN, constants.RIGHT, constants.LEFT])
         snakeHead = self.snakePosition[0]
-        # print('Snake POSITION')
-        # print(self.snakePosition)
-        # print('Snake Head')
-        # print(snakeHead)
         tempSnakePos = tuple(self.snakePosition)
-
-        # print('OOOOOO')
-        # print(f"{snakeHead[0]} , {(snakeHead[1] - 1) % maxCol}")
 
         if self.bonusEated == False and len(self.snakePosition) > 2:
             tempSnakePos = tempSnakePos[:-1]
@@ -79,8 +72,3 @@ class State:
 
     def checkIsGoal(self):
         return len(self.bonusesPosition) == 0
-        
-        
-
-
-# print((-1) % 5)
