@@ -2,15 +2,16 @@ class Queue:
     
     def __init__(self):
         self.queueList = list()
-        self.hashList = list()
+        # self.hashList = list()
+        self.hashList = set()
 
     def add(self, elem):
         self.queueList.append(elem)
-        self.hashList.append(hash(elem))
-        # self.hashList.add(elem)
+        # self.hashList.append(hash(elem))
+        self.hashList.add(hash(elem))
 
     def get(self):
-        self.hashList.pop(0)
+        # self.hashList.pop(0)
         return self.queueList.pop(0)
 
 
