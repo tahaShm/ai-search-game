@@ -1,4 +1,5 @@
 import time
+from copy import deepcopy
 
 from node import implementedQueue
 
@@ -47,8 +48,10 @@ class BFS:
                 self.frontier.add(childNode)
 
     def printSolution(self):
+        print("             BFS Execution time : ", self.execTime)
         print("             BFS pathLength : ", self.resultNode.cost)
-        from copy import deepcopy
+        print("             Total states : ", self.numOfExploredStates)
+        print("             Total unique states : ", self.numOfUniqueExploredStates)
         node = deepcopy(self.resultNode)
         path = ""
         while(node != None):
@@ -62,6 +65,3 @@ class BFS:
                 path += "L"
             node = node.parent
         print("             Result path : ", path[::-1], "\n")
-        print(self.numOfUniqueExploredStates)
-        print(self.numOfExploredStates)
-        print(self.execTime)
