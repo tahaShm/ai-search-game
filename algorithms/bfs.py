@@ -35,8 +35,10 @@ class BFS:
                 childNode = currNode.createChildNode(action, self.maxRow, self.maxCol)
                 self.numOfExploredStates += 1
 
+                tt = time.time()
                 if childNode.state in self.explored or self.frontier.contain(childNode):
                     continue
+                self.optimizeCode = time.time() - tt
 
                 self.numOfUniqueExploredStates += 1
 
@@ -52,24 +54,18 @@ class BFS:
         from copy import deepcopy
         node = deepcopy(self.resultNode)
         path = ""
-        temp = ""
         while(node != None):
             if(node.action == constants.DOWN):
-                temp = "D"
+                path += "D"
             elif(node.action == constants.UP):
-                temp = "U"
+                path += "U"
             elif(node.action == constants.RIGHT):
-                temp = "R"
+                path += "R"
             elif(node.action == constants.LEFT):
-                temp = "L"
-            path += temp
-            # print(node.state.bonusEated)
-            # print(node.action)
-            print(f"{node.state.snakePosition}, {temp}")
-            # print(node.state.bonusesPosition)
-            # print('.........')
+                path += "L"
             node = node.parent
         print("             Result path : ", path[::-1], "\n")
         print(self.numOfUniqueExploredStates)
         print(self.numOfExploredStates)
         print(self.execTime)
+        print(self.optimizeCode)

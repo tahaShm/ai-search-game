@@ -3,7 +3,7 @@ import constants
 class State:
 
     def __init__(self, snakePosition, bonusesPosition, bonusEated = False):
-        self.snakePosition = snakePosition + ((0, 0), )
+        self.snakePosition = snakePosition
         self.bonusesPosition = bonusesPosition
 
         self.bonusEated = bonusEated
