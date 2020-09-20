@@ -3,7 +3,7 @@ import constants
 class State:
 
     def __init__(self, snakePosition, bonusesPosition, bonusEated = False):
-        self.snakePosition = snakePosition
+        self.snakePosition = snakePosition + ((0, 0), )
         self.bonusesPosition = bonusesPosition
 
         self.bonusEated = bonusEated
@@ -26,20 +26,28 @@ class State:
     def getAvailableActions(self, maxRow, maxCol):
         availableActions = set([constants.UP, constants.DOWN, constants.RIGHT, constants.LEFT])
         snakeHead = self.snakePosition[0]
+        # print('Snake POSITION')
+        # print(self.snakePosition)
+        # print('Snake Head')
+        # print(snakeHead)
         tempSnakePos = tuple(self.snakePosition)
+
+        # print('OOOOOO')
+        # print(f"{snakeHead[0]} , {(snakeHead[1] - 1) % maxCol}")
 
         if self.bonusEated == False and len(self.snakePosition) > 2:
             tempSnakePos = tempSnakePos[:-1]
+
         if ((snakeHead[0] + 1) % maxRow, snakeHead[1]) in tempSnakePos:
             availableActions.remove(constants.DOWN)
 
-        elif ((snakeHead[0] - 1) % maxRow, snakeHead[1]) in tempSnakePos:
+        if ((snakeHead[0] - 1) % maxRow, snakeHead[1]) in tempSnakePos:
             availableActions.remove(constants.UP)
 
-        elif (snakeHead[0], (snakeHead[1] + 1) % maxCol) in tempSnakePos:
+        if (snakeHead[0], (snakeHead[1] + 1) % maxCol) in tempSnakePos:
             availableActions.remove(constants.RIGHT)
 
-        elif (snakeHead[0], (snakeHead[1] - 1) % maxCol) in tempSnakePos:
+        if (snakeHead[0], (snakeHead[1] - 1) % maxCol) in tempSnakePos:
             availableActions.remove(constants.LEFT)
 
         return availableActions
