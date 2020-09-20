@@ -13,7 +13,8 @@ bfsObj = bfs.BFS(initNode, IR.mapSize[0], IR.mapSize[1])
 bfsObj.run()
 bfsObj.printSolution()
 
-# print((0, 2) in ((2, 2), (0, 2)))
+# testState = state.State(((2, 2), (2, 3)), ((5, 8)))
+# print(testState.getAvailableActions(100, 100))
 
 # a = tuple([(1, 3)])
 # b = a

@@ -21,15 +21,14 @@ class State:
         return True
 
     def __hash__(self):
-        # hashStr = str(hash(self.snakePosition)) + str(hash(self.bonusesPosition))
-        return hash((self.snakePosition, self.bonusesPosition, self.bonusEated))
+        return hash((self.snakePosition, self.bonusesPosition))
 
     def getAvailableActions(self, maxRow, maxCol):
         availableActions = set([constants.UP, constants.DOWN, constants.RIGHT, constants.LEFT])
         snakeHead = self.snakePosition[0]
         tempSnakePos = tuple(self.snakePosition)
 
-        if self.bonusEated == False:
+        if self.bonusEated == False and len(self.snakePosition) > 2:
             tempSnakePos = tempSnakePos[:-1]
         if ((snakeHead[0] + 1) % maxRow, snakeHead[1]) in tempSnakePos:
             availableActions.remove(constants.DOWN)
