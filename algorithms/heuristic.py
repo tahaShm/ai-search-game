@@ -5,9 +5,9 @@ from node import implementedQueue
 
 import constants
 
-class BFS:
+class AStar:
 
-    def __init__(self, initNode):
+    def __init__(self, initNode, hFunction):
         self.initNode = initNode
         self.resultNode = None
         self.frontier = implementedQueue.Queue()
@@ -16,6 +16,8 @@ class BFS:
         self.numOfUniqueExploredStates = 0
 
         self.explored = set()
+        
+        self.hFunction = hFunction
 
     def run(self):
         startTime = time.time()
@@ -24,11 +26,12 @@ class BFS:
         self.numOfUniqueExploredStates += 1
 
         while not self.frontier.isEmpty():
-            currNode = self.frontier.get()
+            # print (self.numOfExploredStates)
+            currNode = self.frontier.getBest()
             self.explored.add(currNode.state)
 
             for action in currNode.state.getAvailableActions():
-                childNode = currNode.createChildNode(action)
+                childNode = currNode.createChildNode(action, self.hFunction)
                 self.numOfExploredStates += 1
 
                 if childNode.state in self.explored or self.frontier.contain(childNode):
@@ -44,8 +47,8 @@ class BFS:
                 self.frontier.add(childNode)
 
     def printSolution(self):
-        print("             BFS Execution time : ", self.execTime)
-        print("             BFS pathLength : ", self.resultNode.cost)
+        print("             A* Execution time : ", self.execTime)
+        print("             A* pathLength : ", self.resultNode.cost)
         print("             Total states : ", self.numOfExploredStates)
         print("             Total unique states : ", self.numOfUniqueExploredStates)
         node = deepcopy(self.resultNode)

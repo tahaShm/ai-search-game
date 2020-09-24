@@ -5,7 +5,7 @@ import constants
 
 class IDS:
 
-    def __init__(self, initNode, maxRow, maxCol):
+    def __init__(self, initNode):
         self.initNode = initNode
         self.resultNode = None
 
@@ -13,9 +13,6 @@ class IDS:
         self.numOfUniqueExploredStates = 0
 
         self.allExplored = set()
-
-        self.maxRow = maxRow
-        self.maxCol = maxCol
 
     def run(self):
         depth = 0
@@ -33,8 +30,8 @@ class IDS:
         if(depth <= 0):
             return None
 
-        for action in currNode.state.getAvailableActions(self.maxRow, self.maxCol):
-            childNode = currNode.createChildNode(action, self.maxRow, self.maxCol)
+        for action in currNode.state.getAvailableActions():
+            childNode = currNode.createChildNode(action)
             
             self.numOfExploredStates += 1
 
