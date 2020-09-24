@@ -15,7 +15,7 @@ class Node:
         return 0
     
     def getHeuristic2(self, curState) : 
-        return len(curState.bonusesPosition) + curState.getClosestBonusDistance()
+        return (len(curState.bonusesPosition) + curState.getClosestBonusDistance()) * 2
         
     def getHeuristic(self, curState, hFunction) : 
         if (hFunction == 1) : 
