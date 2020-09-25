@@ -19,6 +19,28 @@ idsObj = ids.IDS(initNode)
 idsObj.run()
 idsObj.printSolution()
 
+aStarObj = heuristic.AStar(initNode, 1)
+aStarObj.run()
+aStarObj.printSolution()
+
 aStarObj = heuristic.AStar(initNode, 2)
 aStarObj.run()
 aStarObj.printSolution()
+
+aStarObj = heuristic.AStar(initNode, 1, 2)
+aStarObj.run()
+aStarObj.printSolution()
+
+aStarObj = heuristic.AStar(initNode, 2, 2)
+aStarObj.run()
+aStarObj.printSolution()
+
+aStarObj = heuristic.AStar(initNode, 1, 5)
+aStarObj.run()
+aStarObj.printSolution()
+
+aStarObj = heuristic.AStar(initNode, 2, 5)
+aStarObj.run()
+aStarObj.printSolution()
+
+

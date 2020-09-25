@@ -58,6 +58,7 @@ class IDS:
         return None
 
     def printSolution(self):
+        print("      IDS:")
         print("             IDS Execution time : ", self.execTime)
         print("             IDS pathLength : ", self.resultNode.cost)
         print("             Total states : ", self.numOfExploredStates)

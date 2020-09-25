@@ -45,18 +45,7 @@ class State:
         if (snakeHead[0], (snakeHead[1] - 1) % self.maxCol) in tempSnakePos:
             availableActions.remove(constants.LEFT)
 
-        return availableActions
-    
-    def getClosestBonusDistance(self) : 
-        minDistance = constants.BIGNUM
-        snakeHead = self.snakePosition[0]
-        for bouns in self.bonusesPosition : 
-            dx = min(abs(snakeHead[0] - bouns[0]), abs(snakeHead[0] - bouns[0] + self.maxRow), abs(snakeHead[0] - bouns[0] - self.maxRow))
-            dy = min(abs(snakeHead[1] - bouns[1]), abs(snakeHead[1] - bouns[1] + self.maxCol), abs(snakeHead[1] - bouns[1] - self.maxCol))
-            
-            if (dx + dy < minDistance) : 
-                minDistance = dx + dy
-        return minDistance            
+        return availableActions      
 
     def doAction(self, action):
         snakeHead = self.snakePosition[0]
@@ -85,3 +74,14 @@ class State:
 
     def checkIsGoal(self):
         return len(self.bonusesPosition) == 0
+    
+    def getClosestBonusDistance(self) : 
+        minDistance = constants.BIGNUM
+        snakeHead = self.snakePosition[0]
+        for bouns in self.bonusesPosition : 
+            dx = min(abs(snakeHead[0] - bouns[0]), abs(snakeHead[0] - bouns[0] + self.maxRow), abs(snakeHead[0] - bouns[0] - self.maxRow))
+            dy = min(abs(snakeHead[1] - bouns[1]), abs(snakeHead[1] - bouns[1] + self.maxCol), abs(snakeHead[1] - bouns[1] - self.maxCol))
+            
+            if (dx + dy < minDistance) : 
+                minDistance = dx + dy
+        return minDistance      

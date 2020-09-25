@@ -12,21 +12,21 @@ class Node:
         return hash(hashStr)
     
     def getHeuristic1(self, curState) : 
-        return 0
+        return len(curState.bonusesPosition)
     
     def getHeuristic2(self, curState) : 
-        return (len(curState.bonusesPosition) + curState.getClosestBonusDistance()) * 2
+        return len(curState.bonusesPosition) + curState.getClosestBonusDistance()
         
-    def getHeuristic(self, curState, hFunction) : 
+    def getHeuristic(self, curState, hFunction, hWeight) : 
         if (hFunction == 1) : 
-            return self.getHeuristic1(curState)
+            return hWeight * self.getHeuristic1(curState)
         elif (hFunction == 2) : 
-            return self.getHeuristic2(curState)
+            return hWeight * self.getHeuristic2(curState)
         else : 
             return 0
 
-    def createChildNode(self, action, hFunction = 0):
+    def createChildNode(self, action, hFunction = 0, hWeight = 1):
         childState = self.state.__copy__()
         childState.doAction(action)
-        hf = self.getHeuristic(childState, hFunction)
-        return Node(childState, self, action, self.cost + 1, hf)
+        heuristic = self.getHeuristic(childState, hFunction, hWeight)
+        return Node(childState, self, action, self.cost + 1, heuristic)

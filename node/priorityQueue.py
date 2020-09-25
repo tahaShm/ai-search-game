@@ -1,20 +1,21 @@
 import constants
+import heapq
 
-class Queue:
+class PQueue:
     
     def __init__(self):
-        self.queueList = list()
+        self.pQueueList = list()
         self.hashList = set()
 
     def add(self, elem):
-        self.queueList.append(elem)
+        heapq.heappush(self.pQueueList, [elem.cost + elem.h, hash(elem),  elem])
         self.hashList.add(hash(elem))
 
     def get(self):
-        return self.queueList.pop(0)
-    
+        return heapq.heappop(self.pQueueList)
+
     def isEmpty(self):
-        return len(self.queueList) == 0
+        return len(self.pQueueList) == 0
 
     def contain(self, element):
         return hash(element) in self.hashList

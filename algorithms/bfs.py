@@ -14,6 +14,7 @@ class BFS:
 
         self.numOfExploredStates = 0
         self.numOfUniqueExploredStates = 0
+        
 
         self.explored = set()
 
@@ -44,6 +45,7 @@ class BFS:
                 self.frontier.add(childNode)
 
     def printSolution(self):
+        print("      BFS:")
         print("             BFS Execution time : ", self.execTime)
         print("             BFS pathLength : ", self.resultNode.cost)
         print("             Total states : ", self.numOfExploredStates)

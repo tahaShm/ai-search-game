@@ -1,0 +1,14 @@
+test1_x
+    bfs: < 1s
+    ids: < 2s
+    h: < 1s
+
+test2_x
+    bfs: < 10s
+    ids: < 30s
+    h: < 5s
+
+test3_x
+    bfs: < 30s
+    ids: < 2m
+    h: < 10s
