@@ -1,1 +1,1 @@
-TEST_FILE_ADDRESS = 'tests/test3_1.txt'
+TEST_FILE_ADDRESS = 'tests/test1.txt'

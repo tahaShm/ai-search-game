@@ -42,5 +42,3 @@ aStarObj.printSolution()
 aStarObj = heuristic.AStar(initNode, 2, 5)
 aStarObj.run()
 aStarObj.printSolution()
-
-
